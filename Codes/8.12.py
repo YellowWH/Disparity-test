@@ -15,10 +15,18 @@ from keras.models import load_model
 
 iml = array(Image.open("Laundry-7views\\Laundry\\view0.png"))
 imr = array(Image.open("Laundry-7views\\Laundry\\view1.png"))
-m = 184
-n = 319
+# m = 184
+# n = 319
+m = 40
+n = 40
 # reshape_imr = np.reshape(imr, (165390, 3))
-kaisu = 30000
+kaisu = 1000
+probability = np.ones(32)
+# probability[31] = 10
+# probability[23] = 10
+# # probability[15] = 10
+# probability[7] = 10
+# probability[0] = 10
 input_grey = np.ones((kaisu, 1), dtype=np.uint8)
 target_pixel11 = iml[m, n, ]
 target_pixel12 = iml[m, n + 1, ]
@@ -395,7 +403,7 @@ for i in range(0, kaisu):
     target_pixel17_100[i, ] = target_pixel17
     target_pixel18_100[i, ] = target_pixel18
 
-    target_pixel11_100[i, ] = target_pixel21
+    target_pixel21_100[i, ] = target_pixel21
     target_pixel22_100[i, ] = target_pixel22
     target_pixel23_100[i, ] = target_pixel23
     target_pixel24_100[i, ] = target_pixel24
@@ -469,6 +477,7 @@ for i in range(0, 32):
 # 11
 main_input11 = Input(shape=(1, ), name='main_input11')
 main_layer111 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer111',
@@ -509,6 +518,7 @@ side_layer113 = Dense(1,
 # 12
 main_input12 = Input(shape=(1, ), name='main_input12')
 main_layer121 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer121',
@@ -549,6 +559,7 @@ side_layer123 = Dense(1,
 # 13
 main_input13 = Input(shape=(1, ), name='main_input13')
 main_layer131 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer131',
@@ -589,6 +600,7 @@ side_layer133 = Dense(1,
 # 14
 main_input14 = Input(shape=(1, ), name='main_input14')
 main_layer141 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer141',
@@ -629,6 +641,7 @@ side_layer143 = Dense(1,
 # 15
 main_input15 = Input(shape=(1, ), name='main_input15')
 main_layer151 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer151',
@@ -669,6 +682,7 @@ side_layer153 = Dense(1,
 # 16
 main_input16 = Input(shape=(1, ), name='main_input16')
 main_layer161 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer161',
@@ -709,6 +723,7 @@ side_layer163 = Dense(1,
 # 17
 main_input17 = Input(shape=(1, ), name='main_input17')
 main_layer171 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer171',
@@ -749,6 +764,7 @@ side_layer173 = Dense(1,
 # 18
 main_input18 = Input(shape=(1, ), name='main_input18')
 main_layer181 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer181',
@@ -789,6 +805,7 @@ side_layer183 = Dense(1,
 # 21
 main_input21 = Input(shape=(1, ), name='main_input21')
 main_layer211 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer211',
@@ -829,6 +846,7 @@ side_layer213 = Dense(1,
 # 22
 main_input22 = Input(shape=(1, ), name='main_input22')
 main_layer221 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer221',
@@ -869,6 +887,7 @@ side_layer223 = Dense(1,
 # 23
 main_input23 = Input(shape=(1, ), name='main_input23')
 main_layer231 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer231',
@@ -909,6 +928,7 @@ side_layer233 = Dense(1,
 # 24
 main_input24 = Input(shape=(1, ), name='main_input24')
 main_layer241 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer241',
@@ -949,6 +969,7 @@ side_layer243 = Dense(1,
 # 25
 main_input25 = Input(shape=(1, ), name='main_input25')
 main_layer251 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer251',
@@ -989,6 +1010,7 @@ side_layer253 = Dense(1,
 # 26
 main_input26 = Input(shape=(1, ), name='main_input26')
 main_layer261 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer261',
@@ -1029,6 +1051,7 @@ side_layer263 = Dense(1,
 # 27
 main_input27 = Input(shape=(1, ), name='main_input27')
 main_layer271 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer271',
@@ -1069,6 +1092,7 @@ side_layer273 = Dense(1,
 # 28
 main_input28 = Input(shape=(1, ), name='main_input28')
 main_layer281 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer281',
@@ -1109,6 +1133,7 @@ side_layer283 = Dense(1,
 # 31
 main_input31 = Input(shape=(1, ), name='main_input31')
 main_layer311 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer311',
@@ -1149,6 +1174,7 @@ side_layer313 = Dense(1,
 # 32
 main_input32 = Input(shape=(1, ), name='main_input32')
 main_layer321 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer321',
@@ -1189,6 +1215,7 @@ side_layer323 = Dense(1,
 # 33
 main_input33 = Input(shape=(1, ), name='main_input33')
 main_layer331 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer331',
@@ -1229,6 +1256,7 @@ side_layer333 = Dense(1,
 # 34
 main_input34 = Input(shape=(1, ), name='main_input34')
 main_layer341 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer341',
@@ -1269,6 +1297,7 @@ side_layer343 = Dense(1,
 # 35
 main_input35 = Input(shape=(1, ), name='main_input35')
 main_layer351 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer351',
@@ -1309,6 +1338,7 @@ side_layer353 = Dense(1,
 # 36
 main_input36 = Input(shape=(1, ), name='main_input36')
 main_layer361 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer361',
@@ -1349,6 +1379,7 @@ side_layer363 = Dense(1,
 # 37
 main_input37 = Input(shape=(1, ), name='main_input37')
 main_layer371 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer371',
@@ -1389,6 +1420,7 @@ side_layer373 = Dense(1,
 # 38
 main_input38 = Input(shape=(1, ), name='main_input38')
 main_layer381 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer381',
@@ -1429,6 +1461,7 @@ side_layer383 = Dense(1,
 # 41
 main_input41 = Input(shape=(1, ), name='main_input41')
 main_layer411 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer411',
@@ -1469,6 +1502,7 @@ side_layer413 = Dense(1,
 # 42
 main_input42 = Input(shape=(1, ), name='main_input42')
 main_layer421 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer421',
@@ -1509,6 +1543,7 @@ side_layer423 = Dense(1,
 # 43
 main_input43 = Input(shape=(1, ), name='main_input43')
 main_layer431 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer431',
@@ -1549,6 +1584,7 @@ side_layer433 = Dense(1,
 # 44
 main_input44 = Input(shape=(1, ), name='main_input44')
 main_layer441 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer441',
@@ -1589,6 +1625,7 @@ side_layer443 = Dense(1,
 # 45
 main_input45 = Input(shape=(1, ), name='main_input45')
 main_layer451 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer451',
@@ -1629,6 +1666,7 @@ side_layer453 = Dense(1,
 # 46
 main_input46 = Input(shape=(1, ), name='main_input46')
 main_layer461 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer461',
@@ -1669,6 +1707,7 @@ side_layer463 = Dense(1,
 # 47
 main_input47 = Input(shape=(1, ), name='main_input47')
 main_layer471 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer471',
@@ -1709,6 +1748,7 @@ side_layer473 = Dense(1,
 # 48
 main_input48 = Input(shape=(1, ), name='main_input48')
 main_layer481 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer481',
@@ -1749,6 +1789,7 @@ side_layer483 = Dense(1,
 # 51
 main_input51 = Input(shape=(1, ), name='main_input51')
 main_layer511 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer511',
@@ -1789,6 +1830,7 @@ side_layer513 = Dense(1,
 # 52
 main_input52 = Input(shape=(1, ), name='main_input52')
 main_layer521 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer521',
@@ -1829,6 +1871,7 @@ side_layer523 = Dense(1,
 # 53
 main_input53 = Input(shape=(1, ), name='main_input53')
 main_layer531 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer531',
@@ -1869,6 +1912,7 @@ side_layer533 = Dense(1,
 # 54
 main_input54 = Input(shape=(1, ), name='main_input54')
 main_layer541 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer541',
@@ -1909,6 +1953,7 @@ side_layer543 = Dense(1,
 # 55
 main_input55 = Input(shape=(1, ), name='main_input55')
 main_layer551 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer551',
@@ -1949,6 +1994,7 @@ side_layer553 = Dense(1,
 # 56
 main_input56 = Input(shape=(1, ), name='main_input56')
 main_layer561 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer561',
@@ -1989,6 +2035,7 @@ side_layer563 = Dense(1,
 # 57
 main_input57 = Input(shape=(1, ), name='main_input57')
 main_layer571 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer571',
@@ -2029,6 +2076,7 @@ side_layer573 = Dense(1,
 # 58
 main_input58 = Input(shape=(1, ), name='main_input58')
 main_layer581 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer581',
@@ -2069,6 +2117,7 @@ side_layer583 = Dense(1,
 # 61
 main_input61 = Input(shape=(1, ), name='main_input61')
 main_layer611 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer611',
@@ -2109,6 +2158,7 @@ side_layer613 = Dense(1,
 # 62
 main_input62 = Input(shape=(1, ), name='main_input62')
 main_layer621 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer621',
@@ -2149,6 +2199,7 @@ side_layer623 = Dense(1,
 # 63
 main_input63 = Input(shape=(1, ), name='main_input63')
 main_layer631 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer631',
@@ -2189,6 +2240,7 @@ side_layer633 = Dense(1,
 # 64
 main_input64 = Input(shape=(1, ), name='main_input64')
 main_layer641 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer641',
@@ -2229,6 +2281,7 @@ side_layer643 = Dense(1,
 # 65
 main_input65 = Input(shape=(1, ), name='main_input65')
 main_layer651 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer651',
@@ -2269,6 +2322,7 @@ side_layer653 = Dense(1,
 # 66
 main_input66 = Input(shape=(1, ), name='main_input66')
 main_layer661 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer661',
@@ -2309,6 +2363,7 @@ side_layer663 = Dense(1,
 # 67
 main_input67 = Input(shape=(1, ), name='main_input67')
 main_layer671 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer671',
@@ -2349,6 +2404,7 @@ side_layer673 = Dense(1,
 # 68
 main_input68 = Input(shape=(1, ), name='main_input68')
 main_layer681 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer681',
@@ -2389,6 +2445,7 @@ side_layer683 = Dense(1,
 # 71
 main_input71 = Input(shape=(1, ), name='main_input71')
 main_layer711 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer711',
@@ -2429,6 +2486,7 @@ side_layer713 = Dense(1,
 # 72
 main_input72 = Input(shape=(1, ), name='main_input72')
 main_layer721 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer721',
@@ -2469,6 +2527,7 @@ side_layer723 = Dense(1,
 # 73
 main_input73 = Input(shape=(1, ), name='main_input73')
 main_layer731 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer731',
@@ -2509,6 +2568,7 @@ side_layer733 = Dense(1,
 # 74
 main_input74 = Input(shape=(1, ), name='main_input74')
 main_layer741 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer741',
@@ -2549,6 +2609,7 @@ side_layer743 = Dense(1,
 # 75
 main_input75 = Input(shape=(1, ), name='main_input75')
 main_layer751 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer751',
@@ -2589,6 +2650,7 @@ side_layer753 = Dense(1,
 # 76
 main_input76 = Input(shape=(1, ), name='main_input76')
 main_layer761 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer761',
@@ -2629,6 +2691,7 @@ side_layer763 = Dense(1,
 # 77
 main_input77 = Input(shape=(1, ), name='main_input77')
 main_layer771 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer771',
@@ -2669,6 +2732,7 @@ side_layer773 = Dense(1,
 # 78
 main_input78 = Input(shape=(1, ), name='main_input78')
 main_layer781 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer781',
@@ -2709,6 +2773,7 @@ side_layer783 = Dense(1,
 # 81
 main_input81 = Input(shape=(1, ), name='main_input81')
 main_layer811 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer811',
@@ -2749,6 +2814,7 @@ side_layer813 = Dense(1,
 # 82
 main_input82 = Input(shape=(1, ), name='main_input82')
 main_layer821 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer821',
@@ -2789,6 +2855,7 @@ side_layer823 = Dense(1,
 # 83
 main_input83 = Input(shape=(1, ), name='main_input83')
 main_layer831 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer831',
@@ -2829,6 +2896,7 @@ side_layer833 = Dense(1,
 # 84
 main_input84 = Input(shape=(1, ), name='main_input84')
 main_layer841 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer841',
@@ -2869,6 +2937,7 @@ side_layer843 = Dense(1,
 # 85
 main_input85 = Input(shape=(1, ), name='main_input85')
 main_layer851 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer851',
@@ -2909,6 +2978,7 @@ side_layer853 = Dense(1,
 # 86
 main_input86 = Input(shape=(1, ), name='main_input86')
 main_layer861 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer861',
@@ -2949,6 +3019,7 @@ side_layer863 = Dense(1,
 # 87
 main_input87 = Input(shape=(1, ), name='main_input87')
 main_layer871 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer871',
@@ -2989,6 +3060,7 @@ side_layer873 = Dense(1,
 # 88
 main_input88 = Input(shape=(1, ), name='main_input88')
 main_layer881 = Dense(32,
+                      kernel_initializer=keras.initializers.constant(value=probability),
                       use_bias=False,
                       input_shape=(1, ),
                       name='main_layer881',
@@ -3596,18 +3668,76 @@ model1 = Model([main_input11, main_input12, main_input13, main_input14, main_inp
 
 rMSprop = RMSprop(lr=1e-1)
 adadelta = Adadelta(lr=1e-1)
-adam = Adam(lr=100)
+adam = Adam()
+# entropy权重0
+# model1.compile(optimizer=adam,
+#                loss='mse',
+#                metrics=['accuracy'],
+#                loss_weights={'main_layer113': 1, 'side_layer113': 0, 'main_layer123': 1, 'side_layer123': 0, 'main_layer133': 1, 'side_layer133': 0, 'main_layer143': 1, 'side_layer143': 0, 'main_layer153': 1, 'side_layer153': 0, 'main_layer163': 1, 'side_layer163': 0, 'main_layer173': 1, 'side_layer173': 0, 'main_layer183': 1, 'side_layer183': 0,
+#                              'main_layer213': 1, 'side_layer213': 0, 'main_layer223': 1, 'side_layer223': 0, 'main_layer233': 1, 'side_layer233': 0, 'main_layer243': 1, 'side_layer243': 0, 'main_layer253': 1, 'side_layer253': 0, 'main_layer263': 1, 'side_layer263': 0, 'main_layer273': 1, 'side_layer273': 0, 'main_layer283': 1, 'side_layer283': 0,
+#                              'main_layer313': 1, 'side_layer313': 0, 'main_layer323': 1, 'side_layer323': 0, 'main_layer333': 1, 'side_layer333': 0, 'main_layer343': 1, 'side_layer343': 0, 'main_layer353': 1, 'side_layer353': 0, 'main_layer363': 1, 'side_layer363': 0, 'main_layer373': 1, 'side_layer373': 0, 'main_layer383': 1, 'side_layer383': 0,
+#                              'main_layer413': 1, 'side_layer413': 0, 'main_layer423': 1, 'side_layer423': 0, 'main_layer433': 1, 'side_layer433': 0, 'main_layer443': 1, 'side_layer443': 0, 'main_layer453': 1, 'side_layer453': 0, 'main_layer463': 1, 'side_layer463': 0, 'main_layer473': 1, 'side_layer473': 0, 'main_layer483': 1, 'side_layer483': 0,
+#                              'main_layer513': 1, 'side_layer513': 0, 'main_layer523': 1, 'side_layer523': 0, 'main_layer533': 1, 'side_layer533': 0, 'main_layer543': 1, 'side_layer543': 0, 'main_layer553': 1, 'side_layer553': 0, 'main_layer563': 1, 'side_layer563': 0, 'main_layer573': 1, 'side_layer573': 0, 'main_layer583': 1, 'side_layer583': 0,
+#                              'main_layer613': 1, 'side_layer613': 0, 'main_layer623': 1, 'side_layer623': 0, 'main_layer633': 1, 'side_layer633': 0, 'main_layer643': 1, 'side_layer643': 0, 'main_layer653': 1, 'side_layer653': 0, 'main_layer663': 1, 'side_layer663': 0, 'main_layer673': 1, 'side_layer673': 0, 'main_layer683': 1, 'side_layer683': 0,
+#                              'main_layer713': 1, 'side_layer713': 0, 'main_layer723': 1, 'side_layer723': 0, 'main_layer733': 1, 'side_layer733': 0, 'main_layer743': 1, 'side_layer743': 0, 'main_layer753': 1, 'side_layer753': 0, 'main_layer763': 1, 'side_layer763': 0, 'main_layer773': 1, 'side_layer773': 0, 'main_layer783': 1, 'side_layer783': 0,
+#                              'main_layer813': 1, 'side_layer813': 0, 'main_layer823': 1, 'side_layer823': 0, 'main_layer833': 1, 'side_layer833': 0, 'main_layer843': 1, 'side_layer843': 0, 'main_layer853': 1, 'side_layer853': 0, 'main_layer863': 1, 'side_layer863': 0, 'main_layer873': 1, 'side_layer873': 0, 'main_layer883': 1, 'side_layer883': 0, 'reshaped1': 0}
+#                )
+
+# # entropy权重10
+# model1.compile(optimizer=adam,
+#                loss='mse',
+#                metrics=['accuracy'],
+#                loss_weights={'main_layer113': 1, 'side_layer113': 10, 'main_layer123': 1, 'side_layer123': 10, 'main_layer133': 1, 'side_layer133': 10, 'main_layer143': 1, 'side_layer143': 10, 'main_layer153': 1, 'side_layer153': 10, 'main_layer163': 1, 'side_layer163': 10, 'main_layer173': 1, 'side_layer173': 10, 'main_layer183': 1, 'side_layer183': 10,
+#                              'main_layer213': 1, 'side_layer213': 10, 'main_layer223': 1, 'side_layer223': 10, 'main_layer233': 1, 'side_layer233': 10, 'main_layer243': 1, 'side_layer243': 10, 'main_layer253': 1, 'side_layer253': 10, 'main_layer263': 1, 'side_layer263': 10, 'main_layer273': 1, 'side_layer273': 10, 'main_layer283': 1, 'side_layer283': 10,
+#                              'main_layer313': 1, 'side_layer313': 10, 'main_layer323': 1, 'side_layer323': 10, 'main_layer333': 1, 'side_layer333': 10, 'main_layer343': 1, 'side_layer343': 10, 'main_layer353': 1, 'side_layer353': 10, 'main_layer363': 1, 'side_layer363': 10, 'main_layer373': 1, 'side_layer373': 10, 'main_layer383': 1, 'side_layer383': 10,
+#                              'main_layer413': 1, 'side_layer413': 10, 'main_layer423': 1, 'side_layer423': 10, 'main_layer433': 1, 'side_layer433': 10, 'main_layer443': 1, 'side_layer443': 10, 'main_layer453': 1, 'side_layer453': 10, 'main_layer463': 1, 'side_layer463': 10, 'main_layer473': 1, 'side_layer473': 10, 'main_layer483': 1, 'side_layer483': 10,
+#                              'main_layer513': 1, 'side_layer513': 10, 'main_layer523': 1, 'side_layer523': 10, 'main_layer533': 1, 'side_layer533': 10, 'main_layer543': 1, 'side_layer543': 10, 'main_layer553': 1, 'side_layer553': 10, 'main_layer563': 1, 'side_layer563': 10, 'main_layer573': 1, 'side_layer573': 10, 'main_layer583': 1, 'side_layer583': 10,
+#                              'main_layer613': 1, 'side_layer613': 10, 'main_layer623': 1, 'side_layer623': 10, 'main_layer633': 1, 'side_layer633': 10, 'main_layer643': 1, 'side_layer643': 10, 'main_layer653': 1, 'side_layer653': 10, 'main_layer663': 1, 'side_layer663': 10, 'main_layer673': 1, 'side_layer673': 10, 'main_layer683': 1, 'side_layer683': 10,
+#                              'main_layer713': 1, 'side_layer713': 10, 'main_layer723': 1, 'side_layer723': 10, 'main_layer733': 1, 'side_layer733': 10, 'main_layer743': 1, 'side_layer743': 10, 'main_layer753': 1, 'side_layer753': 10, 'main_layer763': 1, 'side_layer763': 10, 'main_layer773': 1, 'side_layer773': 10, 'main_layer783': 1, 'side_layer783': 10,
+#                              'main_layer813': 1, 'side_layer813': 10, 'main_layer823': 1, 'side_layer823': 10, 'main_layer833': 1, 'side_layer833': 10, 'main_layer843': 1, 'side_layer843': 10, 'main_layer853': 1, 'side_layer853': 10, 'main_layer863': 1, 'side_layer863': 10, 'main_layer873': 1, 'side_layer873': 10, 'main_layer883': 1, 'side_layer883': 10, 'reshaped1': 0}
+#                )
+
+
+# entropy权重30
+# model1.compile(optimizer=adam,
+#                loss='mse',
+#                metrics=['accuracy'],
+#                loss_weights={'main_layer113': 1, 'side_layer113': 30, 'main_layer123': 1, 'side_layer123': 30, 'main_layer133': 1, 'side_layer133': 30, 'main_layer143': 1, 'side_layer143': 30, 'main_layer153': 1, 'side_layer153': 30, 'main_layer163': 1, 'side_layer163': 30, 'main_layer173': 1, 'side_layer173': 30, 'main_layer183': 1, 'side_layer183': 30,
+#                              'main_layer213': 1, 'side_layer213': 30, 'main_layer223': 1, 'side_layer223': 30, 'main_layer233': 1, 'side_layer233': 30, 'main_layer243': 1, 'side_layer243': 30, 'main_layer253': 1, 'side_layer253': 30, 'main_layer263': 1, 'side_layer263': 30, 'main_layer273': 1, 'side_layer273': 30, 'main_layer283': 1, 'side_layer283': 30,
+#                              'main_layer313': 1, 'side_layer313': 30, 'main_layer323': 1, 'side_layer323': 30, 'main_layer333': 1, 'side_layer333': 30, 'main_layer343': 1, 'side_layer343': 30, 'main_layer353': 1, 'side_layer353': 30, 'main_layer363': 1, 'side_layer363': 30, 'main_layer373': 1, 'side_layer373': 30, 'main_layer383': 1, 'side_layer383': 30,
+#                              'main_layer413': 1, 'side_layer413': 30, 'main_layer423': 1, 'side_layer423': 30, 'main_layer433': 1, 'side_layer433': 30, 'main_layer443': 1, 'side_layer443': 30, 'main_layer453': 1, 'side_layer453': 30, 'main_layer463': 1, 'side_layer463': 30, 'main_layer473': 1, 'side_layer473': 30, 'main_layer483': 1, 'side_layer483': 30,
+#                              'main_layer513': 1, 'side_layer513': 30, 'main_layer523': 1, 'side_layer523': 30, 'main_layer533': 1, 'side_layer533': 30, 'main_layer543': 1, 'side_layer543': 30, 'main_layer553': 1, 'side_layer553': 30, 'main_layer563': 1, 'side_layer563': 30, 'main_layer573': 1, 'side_layer573': 30, 'main_layer583': 1, 'side_layer583': 30,
+#                              'main_layer613': 1, 'side_layer613': 30, 'main_layer623': 1, 'side_layer623': 30, 'main_layer633': 1, 'side_layer633': 30, 'main_layer643': 1, 'side_layer643': 30, 'main_layer653': 1, 'side_layer653': 30, 'main_layer663': 1, 'side_layer663': 30, 'main_layer673': 1, 'side_layer673': 30, 'main_layer683': 1, 'side_layer683': 30,
+#                              'main_layer713': 1, 'side_layer713': 30, 'main_layer723': 1, 'side_layer723': 30, 'main_layer733': 1, 'side_layer733': 30, 'main_layer743': 1, 'side_layer743': 30, 'main_layer753': 1, 'side_layer753': 30, 'main_layer763': 1, 'side_layer763': 30, 'main_layer773': 1, 'side_layer773': 30, 'main_layer783': 1, 'side_layer783': 30,
+#                              'main_layer813': 1, 'side_layer813': 30, 'main_layer823': 1, 'side_layer823': 30, 'main_layer833': 1, 'side_layer833': 30, 'main_layer843': 1, 'side_layer843': 30, 'main_layer853': 1, 'side_layer853': 30, 'main_layer863': 1, 'side_layer863': 30, 'main_layer873': 1, 'side_layer873': 30, 'main_layer883': 1, 'side_layer883': 30, 'reshaped1': 0}
+#                )
+
+# entropy权重50
+# model1.compile(optimizer=adam,
+#                loss='mse',
+#                metrics=['accuracy'],
+#                loss_weights={'main_layer113': 1, 'side_layer113': 50, 'main_layer123': 1, 'side_layer123': 50, 'main_layer133': 1, 'side_layer133': 50, 'main_layer143': 1, 'side_layer143': 50, 'main_layer153': 1, 'side_layer153': 50, 'main_layer163': 1, 'side_layer163': 50, 'main_layer173': 1, 'side_layer173': 50, 'main_layer183': 1, 'side_layer183': 50,
+#                              'main_layer213': 1, 'side_layer213': 50, 'main_layer223': 1, 'side_layer223': 50, 'main_layer233': 1, 'side_layer233': 50, 'main_layer243': 1, 'side_layer243': 50, 'main_layer253': 1, 'side_layer253': 50, 'main_layer263': 1, 'side_layer263': 50, 'main_layer273': 1, 'side_layer273': 50, 'main_layer283': 1, 'side_layer283': 50,
+#                              'main_layer313': 1, 'side_layer313': 50, 'main_layer323': 1, 'side_layer323': 50, 'main_layer333': 1, 'side_layer333': 50, 'main_layer343': 1, 'side_layer343': 50, 'main_layer353': 1, 'side_layer353': 50, 'main_layer363': 1, 'side_layer363': 50, 'main_layer373': 1, 'side_layer373': 50, 'main_layer383': 1, 'side_layer383': 50,
+#                              'main_layer413': 1, 'side_layer413': 50, 'main_layer423': 1, 'side_layer423': 50, 'main_layer433': 1, 'side_layer433': 50, 'main_layer443': 1, 'side_layer443': 50, 'main_layer453': 1, 'side_layer453': 50, 'main_layer463': 1, 'side_layer463': 50, 'main_layer473': 1, 'side_layer473': 50, 'main_layer483': 1, 'side_layer483': 50,
+#                              'main_layer513': 1, 'side_layer513': 50, 'main_layer523': 1, 'side_layer523': 50, 'main_layer533': 1, 'side_layer533': 50, 'main_layer543': 1, 'side_layer543': 50, 'main_layer553': 1, 'side_layer553': 50, 'main_layer563': 1, 'side_layer563': 50, 'main_layer573': 1, 'side_layer573': 50, 'main_layer583': 1, 'side_layer583': 50,
+#                              'main_layer613': 1, 'side_layer613': 50, 'main_layer623': 1, 'side_layer623': 50, 'main_layer633': 1, 'side_layer633': 50, 'main_layer643': 1, 'side_layer643': 50, 'main_layer653': 1, 'side_layer653': 50, 'main_layer663': 1, 'side_layer663': 50, 'main_layer673': 1, 'side_layer673': 50, 'main_layer683': 1, 'side_layer683': 50,
+#                              'main_layer713': 1, 'side_layer713': 50, 'main_layer723': 1, 'side_layer723': 50, 'main_layer733': 1, 'side_layer733': 50, 'main_layer743': 1, 'side_layer743': 50, 'main_layer753': 1, 'side_layer753': 50, 'main_layer763': 1, 'side_layer763': 50, 'main_layer773': 1, 'side_layer773': 50, 'main_layer783': 1, 'side_layer783': 50,
+#                              'main_layer813': 1, 'side_layer813': 50, 'main_layer823': 1, 'side_layer823': 50, 'main_layer833': 1, 'side_layer833': 50, 'main_layer843': 1, 'side_layer843': 50, 'main_layer853': 1, 'side_layer853': 50, 'main_layer863': 1, 'side_layer863': 50, 'main_layer873': 1, 'side_layer873': 50, 'main_layer883': 1, 'side_layer883': 50, 'reshaped1': 0}
+#                )
+
+# # entropy权重100
 model1.compile(optimizer=adam,
                loss='mse',
                metrics=['accuracy'],
-               loss_weights={'main_layer113': 1, 'side_layer113': 0, 'main_layer123': 1, 'side_layer123': 0, 'main_layer133': 1, 'side_layer133': 0, 'main_layer143': 1, 'side_layer143': 0, 'main_layer153': 1, 'side_layer153': 0, 'main_layer163': 1, 'side_layer163': 0, 'main_layer173': 1, 'side_layer173': 0, 'main_layer183': 1, 'side_layer183': 0,
-                             'main_layer213': 1, 'side_layer213': 0, 'main_layer223': 1, 'side_layer223': 0, 'main_layer233': 1, 'side_layer233': 0, 'main_layer243': 1, 'side_layer243': 0, 'main_layer253': 1, 'side_layer253': 0, 'main_layer263': 1, 'side_layer263': 0, 'main_layer273': 1, 'side_layer273': 0, 'main_layer283': 1, 'side_layer283': 0,
-                             'main_layer313': 1, 'side_layer313': 0, 'main_layer323': 1, 'side_layer323': 0, 'main_layer333': 1, 'side_layer333': 0, 'main_layer343': 1, 'side_layer343': 0, 'main_layer353': 1, 'side_layer353': 0, 'main_layer363': 1, 'side_layer363': 0, 'main_layer373': 1, 'side_layer373': 0, 'main_layer383': 1, 'side_layer383': 0,
-                             'main_layer413': 1, 'side_layer413': 0, 'main_layer423': 1, 'side_layer423': 0, 'main_layer433': 1, 'side_layer433': 0, 'main_layer443': 1, 'side_layer443': 0, 'main_layer453': 1, 'side_layer453': 0, 'main_layer463': 1, 'side_layer463': 0, 'main_layer473': 1, 'side_layer473': 0, 'main_layer483': 1, 'side_layer483': 0,
-                             'main_layer513': 1, 'side_layer513': 0, 'main_layer523': 1, 'side_layer523': 0, 'main_layer533': 1, 'side_layer533': 0, 'main_layer543': 1, 'side_layer543': 0, 'main_layer553': 1, 'side_layer553': 0, 'main_layer563': 1, 'side_layer563': 0, 'main_layer573': 1, 'side_layer573': 0, 'main_layer583': 1, 'side_layer583': 0,
-                             'main_layer613': 1, 'side_layer613': 0, 'main_layer623': 1, 'side_layer623': 0, 'main_layer633': 1, 'side_layer633': 0, 'main_layer643': 1, 'side_layer643': 0, 'main_layer653': 1, 'side_layer653': 0, 'main_layer663': 1, 'side_layer663': 0, 'main_layer673': 1, 'side_layer673': 0, 'main_layer683': 1, 'side_layer683': 0,
-                             'main_layer713': 1, 'side_layer713': 0, 'main_layer723': 1, 'side_layer723': 0, 'main_layer733': 1, 'side_layer733': 0, 'main_layer743': 1, 'side_layer743': 0, 'main_layer753': 1, 'side_layer753': 0, 'main_layer763': 1, 'side_layer763': 0, 'main_layer773': 1, 'side_layer773': 0, 'main_layer783': 1, 'side_layer783': 0,
-                             'main_layer813': 1, 'side_layer813': 0, 'main_layer823': 1, 'side_layer823': 0, 'main_layer833': 1, 'side_layer833': 0, 'main_layer843': 1, 'side_layer843': 0, 'main_layer853': 1, 'side_layer853': 0, 'main_layer863': 1, 'side_layer863': 0, 'main_layer873': 1, 'side_layer873': 0, 'main_layer883': 1, 'side_layer883': 0, 'reshaped1': 0}
+               loss_weights={'main_layer113': 1, 'side_layer113': 100, 'main_layer123': 1, 'side_layer123': 100, 'main_layer133': 1, 'side_layer133': 100, 'main_layer143': 1, 'side_layer143': 100, 'main_layer153': 1, 'side_layer153': 100, 'main_layer163': 1, 'side_layer163': 100, 'main_layer173': 1, 'side_layer173': 100, 'main_layer183': 1, 'side_layer183': 100,
+                             'main_layer213': 1, 'side_layer213': 100, 'main_layer223': 1, 'side_layer223': 100, 'main_layer233': 1, 'side_layer233': 100, 'main_layer243': 1, 'side_layer243': 100, 'main_layer253': 1, 'side_layer253': 100, 'main_layer263': 1, 'side_layer263': 100, 'main_layer273': 1, 'side_layer273': 100, 'main_layer283': 1, 'side_layer283': 100,
+                             'main_layer313': 1, 'side_layer313': 100, 'main_layer323': 1, 'side_layer323': 100, 'main_layer333': 1, 'side_layer333': 100, 'main_layer343': 1, 'side_layer343': 100, 'main_layer353': 1, 'side_layer353': 100, 'main_layer363': 1, 'side_layer363': 100, 'main_layer373': 1, 'side_layer373': 100, 'main_layer383': 1, 'side_layer383': 100,
+                             'main_layer413': 1, 'side_layer413': 100, 'main_layer423': 1, 'side_layer423': 100, 'main_layer433': 1, 'side_layer433': 100, 'main_layer443': 1, 'side_layer443': 100, 'main_layer453': 1, 'side_layer453': 100, 'main_layer463': 1, 'side_layer463': 100, 'main_layer473': 1, 'side_layer473': 100, 'main_layer483': 1, 'side_layer483': 100,
+                             'main_layer513': 1, 'side_layer513': 100, 'main_layer523': 1, 'side_layer523': 100, 'main_layer533': 1, 'side_layer533': 100, 'main_layer543': 1, 'side_layer543': 100, 'main_layer553': 1, 'side_layer553': 100, 'main_layer563': 1, 'side_layer563': 100, 'main_layer573': 1, 'side_layer573': 100, 'main_layer583': 1, 'side_layer583': 100,
+                             'main_layer613': 1, 'side_layer613': 100, 'main_layer623': 1, 'side_layer623': 100, 'main_layer633': 1, 'side_layer633': 100, 'main_layer643': 1, 'side_layer643': 100, 'main_layer653': 1, 'side_layer653': 100, 'main_layer663': 1, 'side_layer663': 100, 'main_layer673': 1, 'side_layer673': 100, 'main_layer683': 1, 'side_layer683': 100,
+                             'main_layer713': 1, 'side_layer713': 100, 'main_layer723': 1, 'side_layer723': 100, 'main_layer733': 1, 'side_layer733': 100, 'main_layer743': 1, 'side_layer743': 100, 'main_layer753': 1, 'side_layer753': 100, 'main_layer763': 1, 'side_layer763': 100, 'main_layer773': 1, 'side_layer773': 100, 'main_layer783': 1, 'side_layer783': 100,
+                             'main_layer813': 1, 'side_layer813': 100, 'main_layer823': 1, 'side_layer823': 100, 'main_layer833': 1, 'side_layer833': 100, 'main_layer843': 1, 'side_layer843': 100, 'main_layer853': 1, 'side_layer853': 100, 'main_layer863': 1, 'side_layer863': 100, 'main_layer873': 1, 'side_layer873': 100, 'main_layer883': 1, 'side_layer883': 100, 'reshaped1': 0}
                )
 
 model1.fit([input_grey, input_grey, input_grey, input_grey, input_grey, input_grey, input_grey, input_grey,
@@ -3626,11 +3756,11 @@ model1.fit([input_grey, input_grey, input_grey, input_grey, input_grey, input_gr
             target_pixel61_100, target_side_100, target_pixel62_100, target_side_100, target_pixel63_100, target_side_100, target_pixel64_100, target_side_100, target_pixel65_100, target_side_100, target_pixel66_100, target_side_100, target_pixel67_100, target_side_100, target_pixel68_100, target_side_100,
             target_pixel71_100, target_side_100, target_pixel72_100, target_side_100, target_pixel73_100, target_side_100, target_pixel74_100, target_side_100, target_pixel75_100, target_side_100, target_pixel76_100, target_side_100, target_pixel77_100, target_side_100, target_pixel78_100, target_side_100,
             target_pixel81_100, target_side_100, target_pixel82_100, target_side_100, target_pixel83_100, target_side_100, target_pixel84_100, target_side_100, target_pixel85_100, target_side_100, target_pixel86_100, target_side_100, target_pixel87_100, target_side_100, target_pixel88_100, target_side_100,test1],
-           epochs=20, batch_size=10)
+           epochs=100, batch_size=10)
 
 # print(model1.get_output_at(0))
 
-print(model1.get_weights())
+# print(model1.get_weights())
 
 model1.summary()
 
@@ -3716,77 +3846,81 @@ model1.summary()
 # print(iml[m, n+1, ])
 # print(iml[m+1, n, ])
 # print(iml[m+1, n+1, ])
-print(layer112_weights)
-print(layer122_weights)
-print(layer132_weights)
-print(layer142_weights)
-print(layer152_weights)
-print(layer162_weights)
-print(layer172_weights)
-print(layer182_weights)
 
-print(layer212_weights)
-print(layer222_weights)
-print(layer232_weights)
-print(layer242_weights)
-print(layer252_weights)
-print(layer262_weights)
-print(layer272_weights)
-print(layer282_weights)
+# 11111
+# print(layer112_weights)
+# print(layer122_weights)
+# print(layer132_weights)
+# print(layer142_weights)
+# print(layer152_weights)
+# print(layer162_weights)
+# print(layer172_weights)
+# print(layer182_weights)
+#
+# print(layer212_weights)
+# print(layer222_weights)
+# print(layer232_weights)
+# print(layer242_weights)
+# print(layer252_weights)
+# print(layer262_weights)
+# print(layer272_weights)
+# print(layer282_weights)
+#
+# print(layer312_weights)
+# print(layer322_weights)
+# print(layer332_weights)
+# print(layer342_weights)
+# print(layer352_weights)
+# print(layer362_weights)
+# print(layer372_weights)
+# print(layer382_weights)
+#
+# print(layer412_weights)
+# print(layer422_weights)
+# print(layer432_weights)
+# print(layer442_weights)
+# print(layer452_weights)
+# print(layer462_weights)
+# print(layer472_weights)
+# print(layer482_weights)
+#
+# print(layer512_weights)
+# print(layer522_weights)
+# print(layer532_weights)
+# print(layer542_weights)
+# print(layer552_weights)
+# print(layer562_weights)
+# print(layer572_weights)
+# print(layer582_weights)
+#
+# print(layer612_weights)
+# print(layer622_weights)
+# print(layer632_weights)
+# print(layer642_weights)
+# print(layer652_weights)
+# print(layer662_weights)
+# print(layer672_weights)
+# print(layer682_weights)
+#
+# print(layer712_weights)
+# print(layer722_weights)
+# print(layer732_weights)
+# print(layer742_weights)
+# print(layer752_weights)
+# print(layer762_weights)
+# print(layer772_weights)
+# print(layer782_weights)
+#
+# print(layer812_weights)
+# print(layer822_weights)
+# print(layer832_weights)
+# print(layer842_weights)
+# print(layer852_weights)
+# print(layer862_weights)
+# print(layer872_weights)
+# print(layer882_weights)
+# # 1111111
 
-print(layer312_weights)
-print(layer322_weights)
-print(layer332_weights)
-print(layer342_weights)
-print(layer352_weights)
-print(layer362_weights)
-print(layer372_weights)
-print(layer382_weights)
-
-print(layer412_weights)
-print(layer422_weights)
-print(layer432_weights)
-print(layer442_weights)
-print(layer452_weights)
-print(layer462_weights)
-print(layer472_weights)
-print(layer482_weights)
-
-print(layer512_weights)
-print(layer522_weights)
-print(layer532_weights)
-print(layer542_weights)
-print(layer552_weights)
-print(layer562_weights)
-print(layer572_weights)
-print(layer582_weights)
-
-print(layer612_weights)
-print(layer622_weights)
-print(layer632_weights)
-print(layer642_weights)
-print(layer652_weights)
-print(layer662_weights)
-print(layer672_weights)
-print(layer682_weights)
-
-print(layer712_weights)
-print(layer722_weights)
-print(layer732_weights)
-print(layer742_weights)
-print(layer752_weights)
-print(layer762_weights)
-print(layer772_weights)
-print(layer782_weights)
-
-print(layer812_weights)
-print(layer822_weights)
-print(layer832_weights)
-print(layer842_weights)
-print(layer852_weights)
-print(layer862_weights)
-print(layer872_weights)
-print(layer882_weights)
 
 # 1
 dense1_layer_model = Model(inputs=model1.input,
