@@ -13,19 +13,22 @@ from keras.models import Model
 import h5py
 from keras.models import load_model
 
-iml = array(Image.open("Laundry-7views\\Laundry\\view0.png"))
-imr = array(Image.open("Laundry-7views\\Laundry\\view1.png"))
+iml = array(Image.open("Laundry-7views\\Laundry\\view0.png"))/255
+imr = array(Image.open("Laundry-7views\\Laundry\\view1.png"))/255
+alpha = 1
+beta = 0.05
+gamma = 1
 # m = 184
 # n = 319
 m = 40
 n = 40
 # reshape_imr = np.reshape(imr, (165390, 3))
-kaisu = 1000
+kaisu = 5000
 probability = np.ones(32)
 # probability[31] = 10
-# probability[23] = 10
-# # probability[15] = 10
-# probability[7] = 10
+probability[23] = 10
+# probability[15] = 10
+probability[7] = 10
 # probability[0] = 10
 input_grey = np.ones((kaisu, 1), dtype=np.uint8)
 target_pixel11 = iml[m, n, ]
@@ -3670,74 +3673,17 @@ rMSprop = RMSprop(lr=1e-1)
 adadelta = Adadelta(lr=1e-1)
 adam = Adam()
 # entropy权重0
-# model1.compile(optimizer=adam,
-#                loss='mse',
-#                metrics=['accuracy'],
-#                loss_weights={'main_layer113': 1, 'side_layer113': 0, 'main_layer123': 1, 'side_layer123': 0, 'main_layer133': 1, 'side_layer133': 0, 'main_layer143': 1, 'side_layer143': 0, 'main_layer153': 1, 'side_layer153': 0, 'main_layer163': 1, 'side_layer163': 0, 'main_layer173': 1, 'side_layer173': 0, 'main_layer183': 1, 'side_layer183': 0,
-#                              'main_layer213': 1, 'side_layer213': 0, 'main_layer223': 1, 'side_layer223': 0, 'main_layer233': 1, 'side_layer233': 0, 'main_layer243': 1, 'side_layer243': 0, 'main_layer253': 1, 'side_layer253': 0, 'main_layer263': 1, 'side_layer263': 0, 'main_layer273': 1, 'side_layer273': 0, 'main_layer283': 1, 'side_layer283': 0,
-#                              'main_layer313': 1, 'side_layer313': 0, 'main_layer323': 1, 'side_layer323': 0, 'main_layer333': 1, 'side_layer333': 0, 'main_layer343': 1, 'side_layer343': 0, 'main_layer353': 1, 'side_layer353': 0, 'main_layer363': 1, 'side_layer363': 0, 'main_layer373': 1, 'side_layer373': 0, 'main_layer383': 1, 'side_layer383': 0,
-#                              'main_layer413': 1, 'side_layer413': 0, 'main_layer423': 1, 'side_layer423': 0, 'main_layer433': 1, 'side_layer433': 0, 'main_layer443': 1, 'side_layer443': 0, 'main_layer453': 1, 'side_layer453': 0, 'main_layer463': 1, 'side_layer463': 0, 'main_layer473': 1, 'side_layer473': 0, 'main_layer483': 1, 'side_layer483': 0,
-#                              'main_layer513': 1, 'side_layer513': 0, 'main_layer523': 1, 'side_layer523': 0, 'main_layer533': 1, 'side_layer533': 0, 'main_layer543': 1, 'side_layer543': 0, 'main_layer553': 1, 'side_layer553': 0, 'main_layer563': 1, 'side_layer563': 0, 'main_layer573': 1, 'side_layer573': 0, 'main_layer583': 1, 'side_layer583': 0,
-#                              'main_layer613': 1, 'side_layer613': 0, 'main_layer623': 1, 'side_layer623': 0, 'main_layer633': 1, 'side_layer633': 0, 'main_layer643': 1, 'side_layer643': 0, 'main_layer653': 1, 'side_layer653': 0, 'main_layer663': 1, 'side_layer663': 0, 'main_layer673': 1, 'side_layer673': 0, 'main_layer683': 1, 'side_layer683': 0,
-#                              'main_layer713': 1, 'side_layer713': 0, 'main_layer723': 1, 'side_layer723': 0, 'main_layer733': 1, 'side_layer733': 0, 'main_layer743': 1, 'side_layer743': 0, 'main_layer753': 1, 'side_layer753': 0, 'main_layer763': 1, 'side_layer763': 0, 'main_layer773': 1, 'side_layer773': 0, 'main_layer783': 1, 'side_layer783': 0,
-#                              'main_layer813': 1, 'side_layer813': 0, 'main_layer823': 1, 'side_layer823': 0, 'main_layer833': 1, 'side_layer833': 0, 'main_layer843': 1, 'side_layer843': 0, 'main_layer853': 1, 'side_layer853': 0, 'main_layer863': 1, 'side_layer863': 0, 'main_layer873': 1, 'side_layer873': 0, 'main_layer883': 1, 'side_layer883': 0, 'reshaped1': 0}
-#                )
-
-# # entropy权重10
-# model1.compile(optimizer=adam,
-#                loss='mse',
-#                metrics=['accuracy'],
-#                loss_weights={'main_layer113': 1, 'side_layer113': 10, 'main_layer123': 1, 'side_layer123': 10, 'main_layer133': 1, 'side_layer133': 10, 'main_layer143': 1, 'side_layer143': 10, 'main_layer153': 1, 'side_layer153': 10, 'main_layer163': 1, 'side_layer163': 10, 'main_layer173': 1, 'side_layer173': 10, 'main_layer183': 1, 'side_layer183': 10,
-#                              'main_layer213': 1, 'side_layer213': 10, 'main_layer223': 1, 'side_layer223': 10, 'main_layer233': 1, 'side_layer233': 10, 'main_layer243': 1, 'side_layer243': 10, 'main_layer253': 1, 'side_layer253': 10, 'main_layer263': 1, 'side_layer263': 10, 'main_layer273': 1, 'side_layer273': 10, 'main_layer283': 1, 'side_layer283': 10,
-#                              'main_layer313': 1, 'side_layer313': 10, 'main_layer323': 1, 'side_layer323': 10, 'main_layer333': 1, 'side_layer333': 10, 'main_layer343': 1, 'side_layer343': 10, 'main_layer353': 1, 'side_layer353': 10, 'main_layer363': 1, 'side_layer363': 10, 'main_layer373': 1, 'side_layer373': 10, 'main_layer383': 1, 'side_layer383': 10,
-#                              'main_layer413': 1, 'side_layer413': 10, 'main_layer423': 1, 'side_layer423': 10, 'main_layer433': 1, 'side_layer433': 10, 'main_layer443': 1, 'side_layer443': 10, 'main_layer453': 1, 'side_layer453': 10, 'main_layer463': 1, 'side_layer463': 10, 'main_layer473': 1, 'side_layer473': 10, 'main_layer483': 1, 'side_layer483': 10,
-#                              'main_layer513': 1, 'side_layer513': 10, 'main_layer523': 1, 'side_layer523': 10, 'main_layer533': 1, 'side_layer533': 10, 'main_layer543': 1, 'side_layer543': 10, 'main_layer553': 1, 'side_layer553': 10, 'main_layer563': 1, 'side_layer563': 10, 'main_layer573': 1, 'side_layer573': 10, 'main_layer583': 1, 'side_layer583': 10,
-#                              'main_layer613': 1, 'side_layer613': 10, 'main_layer623': 1, 'side_layer623': 10, 'main_layer633': 1, 'side_layer633': 10, 'main_layer643': 1, 'side_layer643': 10, 'main_layer653': 1, 'side_layer653': 10, 'main_layer663': 1, 'side_layer663': 10, 'main_layer673': 1, 'side_layer673': 10, 'main_layer683': 1, 'side_layer683': 10,
-#                              'main_layer713': 1, 'side_layer713': 10, 'main_layer723': 1, 'side_layer723': 10, 'main_layer733': 1, 'side_layer733': 10, 'main_layer743': 1, 'side_layer743': 10, 'main_layer753': 1, 'side_layer753': 10, 'main_layer763': 1, 'side_layer763': 10, 'main_layer773': 1, 'side_layer773': 10, 'main_layer783': 1, 'side_layer783': 10,
-#                              'main_layer813': 1, 'side_layer813': 10, 'main_layer823': 1, 'side_layer823': 10, 'main_layer833': 1, 'side_layer833': 10, 'main_layer843': 1, 'side_layer843': 10, 'main_layer853': 1, 'side_layer853': 10, 'main_layer863': 1, 'side_layer863': 10, 'main_layer873': 1, 'side_layer873': 10, 'main_layer883': 1, 'side_layer883': 10, 'reshaped1': 0}
-#                )
-
-
-# entropy权重30
-# model1.compile(optimizer=adam,
-#                loss='mse',
-#                metrics=['accuracy'],
-#                loss_weights={'main_layer113': 1, 'side_layer113': 30, 'main_layer123': 1, 'side_layer123': 30, 'main_layer133': 1, 'side_layer133': 30, 'main_layer143': 1, 'side_layer143': 30, 'main_layer153': 1, 'side_layer153': 30, 'main_layer163': 1, 'side_layer163': 30, 'main_layer173': 1, 'side_layer173': 30, 'main_layer183': 1, 'side_layer183': 30,
-#                              'main_layer213': 1, 'side_layer213': 30, 'main_layer223': 1, 'side_layer223': 30, 'main_layer233': 1, 'side_layer233': 30, 'main_layer243': 1, 'side_layer243': 30, 'main_layer253': 1, 'side_layer253': 30, 'main_layer263': 1, 'side_layer263': 30, 'main_layer273': 1, 'side_layer273': 30, 'main_layer283': 1, 'side_layer283': 30,
-#                              'main_layer313': 1, 'side_layer313': 30, 'main_layer323': 1, 'side_layer323': 30, 'main_layer333': 1, 'side_layer333': 30, 'main_layer343': 1, 'side_layer343': 30, 'main_layer353': 1, 'side_layer353': 30, 'main_layer363': 1, 'side_layer363': 30, 'main_layer373': 1, 'side_layer373': 30, 'main_layer383': 1, 'side_layer383': 30,
-#                              'main_layer413': 1, 'side_layer413': 30, 'main_layer423': 1, 'side_layer423': 30, 'main_layer433': 1, 'side_layer433': 30, 'main_layer443': 1, 'side_layer443': 30, 'main_layer453': 1, 'side_layer453': 30, 'main_layer463': 1, 'side_layer463': 30, 'main_layer473': 1, 'side_layer473': 30, 'main_layer483': 1, 'side_layer483': 30,
-#                              'main_layer513': 1, 'side_layer513': 30, 'main_layer523': 1, 'side_layer523': 30, 'main_layer533': 1, 'side_layer533': 30, 'main_layer543': 1, 'side_layer543': 30, 'main_layer553': 1, 'side_layer553': 30, 'main_layer563': 1, 'side_layer563': 30, 'main_layer573': 1, 'side_layer573': 30, 'main_layer583': 1, 'side_layer583': 30,
-#                              'main_layer613': 1, 'side_layer613': 30, 'main_layer623': 1, 'side_layer623': 30, 'main_layer633': 1, 'side_layer633': 30, 'main_layer643': 1, 'side_layer643': 30, 'main_layer653': 1, 'side_layer653': 30, 'main_layer663': 1, 'side_layer663': 30, 'main_layer673': 1, 'side_layer673': 30, 'main_layer683': 1, 'side_layer683': 30,
-#                              'main_layer713': 1, 'side_layer713': 30, 'main_layer723': 1, 'side_layer723': 30, 'main_layer733': 1, 'side_layer733': 30, 'main_layer743': 1, 'side_layer743': 30, 'main_layer753': 1, 'side_layer753': 30, 'main_layer763': 1, 'side_layer763': 30, 'main_layer773': 1, 'side_layer773': 30, 'main_layer783': 1, 'side_layer783': 30,
-#                              'main_layer813': 1, 'side_layer813': 30, 'main_layer823': 1, 'side_layer823': 30, 'main_layer833': 1, 'side_layer833': 30, 'main_layer843': 1, 'side_layer843': 30, 'main_layer853': 1, 'side_layer853': 30, 'main_layer863': 1, 'side_layer863': 30, 'main_layer873': 1, 'side_layer873': 30, 'main_layer883': 1, 'side_layer883': 30, 'reshaped1': 0}
-#                )
-
-# entropy权重50
-# model1.compile(optimizer=adam,
-#                loss='mse',
-#                metrics=['accuracy'],
-#                loss_weights={'main_layer113': 1, 'side_layer113': 50, 'main_layer123': 1, 'side_layer123': 50, 'main_layer133': 1, 'side_layer133': 50, 'main_layer143': 1, 'side_layer143': 50, 'main_layer153': 1, 'side_layer153': 50, 'main_layer163': 1, 'side_layer163': 50, 'main_layer173': 1, 'side_layer173': 50, 'main_layer183': 1, 'side_layer183': 50,
-#                              'main_layer213': 1, 'side_layer213': 50, 'main_layer223': 1, 'side_layer223': 50, 'main_layer233': 1, 'side_layer233': 50, 'main_layer243': 1, 'side_layer243': 50, 'main_layer253': 1, 'side_layer253': 50, 'main_layer263': 1, 'side_layer263': 50, 'main_layer273': 1, 'side_layer273': 50, 'main_layer283': 1, 'side_layer283': 50,
-#                              'main_layer313': 1, 'side_layer313': 50, 'main_layer323': 1, 'side_layer323': 50, 'main_layer333': 1, 'side_layer333': 50, 'main_layer343': 1, 'side_layer343': 50, 'main_layer353': 1, 'side_layer353': 50, 'main_layer363': 1, 'side_layer363': 50, 'main_layer373': 1, 'side_layer373': 50, 'main_layer383': 1, 'side_layer383': 50,
-#                              'main_layer413': 1, 'side_layer413': 50, 'main_layer423': 1, 'side_layer423': 50, 'main_layer433': 1, 'side_layer433': 50, 'main_layer443': 1, 'side_layer443': 50, 'main_layer453': 1, 'side_layer453': 50, 'main_layer463': 1, 'side_layer463': 50, 'main_layer473': 1, 'side_layer473': 50, 'main_layer483': 1, 'side_layer483': 50,
-#                              'main_layer513': 1, 'side_layer513': 50, 'main_layer523': 1, 'side_layer523': 50, 'main_layer533': 1, 'side_layer533': 50, 'main_layer543': 1, 'side_layer543': 50, 'main_layer553': 1, 'side_layer553': 50, 'main_layer563': 1, 'side_layer563': 50, 'main_layer573': 1, 'side_layer573': 50, 'main_layer583': 1, 'side_layer583': 50,
-#                              'main_layer613': 1, 'side_layer613': 50, 'main_layer623': 1, 'side_layer623': 50, 'main_layer633': 1, 'side_layer633': 50, 'main_layer643': 1, 'side_layer643': 50, 'main_layer653': 1, 'side_layer653': 50, 'main_layer663': 1, 'side_layer663': 50, 'main_layer673': 1, 'side_layer673': 50, 'main_layer683': 1, 'side_layer683': 50,
-#                              'main_layer713': 1, 'side_layer713': 50, 'main_layer723': 1, 'side_layer723': 50, 'main_layer733': 1, 'side_layer733': 50, 'main_layer743': 1, 'side_layer743': 50, 'main_layer753': 1, 'side_layer753': 50, 'main_layer763': 1, 'side_layer763': 50, 'main_layer773': 1, 'side_layer773': 50, 'main_layer783': 1, 'side_layer783': 50,
-#                              'main_layer813': 1, 'side_layer813': 50, 'main_layer823': 1, 'side_layer823': 50, 'main_layer833': 1, 'side_layer833': 50, 'main_layer843': 1, 'side_layer843': 50, 'main_layer853': 1, 'side_layer853': 50, 'main_layer863': 1, 'side_layer863': 50, 'main_layer873': 1, 'side_layer873': 50, 'main_layer883': 1, 'side_layer883': 50, 'reshaped1': 0}
-#                )
-
-# # entropy权重100
 model1.compile(optimizer=adam,
                loss='mse',
                metrics=['accuracy'],
-               loss_weights={'main_layer113': 1, 'side_layer113': 100, 'main_layer123': 1, 'side_layer123': 100, 'main_layer133': 1, 'side_layer133': 100, 'main_layer143': 1, 'side_layer143': 100, 'main_layer153': 1, 'side_layer153': 100, 'main_layer163': 1, 'side_layer163': 100, 'main_layer173': 1, 'side_layer173': 100, 'main_layer183': 1, 'side_layer183': 100,
-                             'main_layer213': 1, 'side_layer213': 100, 'main_layer223': 1, 'side_layer223': 100, 'main_layer233': 1, 'side_layer233': 100, 'main_layer243': 1, 'side_layer243': 100, 'main_layer253': 1, 'side_layer253': 100, 'main_layer263': 1, 'side_layer263': 100, 'main_layer273': 1, 'side_layer273': 100, 'main_layer283': 1, 'side_layer283': 100,
-                             'main_layer313': 1, 'side_layer313': 100, 'main_layer323': 1, 'side_layer323': 100, 'main_layer333': 1, 'side_layer333': 100, 'main_layer343': 1, 'side_layer343': 100, 'main_layer353': 1, 'side_layer353': 100, 'main_layer363': 1, 'side_layer363': 100, 'main_layer373': 1, 'side_layer373': 100, 'main_layer383': 1, 'side_layer383': 100,
-                             'main_layer413': 1, 'side_layer413': 100, 'main_layer423': 1, 'side_layer423': 100, 'main_layer433': 1, 'side_layer433': 100, 'main_layer443': 1, 'side_layer443': 100, 'main_layer453': 1, 'side_layer453': 100, 'main_layer463': 1, 'side_layer463': 100, 'main_layer473': 1, 'side_layer473': 100, 'main_layer483': 1, 'side_layer483': 100,
-                             'main_layer513': 1, 'side_layer513': 100, 'main_layer523': 1, 'side_layer523': 100, 'main_layer533': 1, 'side_layer533': 100, 'main_layer543': 1, 'side_layer543': 100, 'main_layer553': 1, 'side_layer553': 100, 'main_layer563': 1, 'side_layer563': 100, 'main_layer573': 1, 'side_layer573': 100, 'main_layer583': 1, 'side_layer583': 100,
-                             'main_layer613': 1, 'side_layer613': 100, 'main_layer623': 1, 'side_layer623': 100, 'main_layer633': 1, 'side_layer633': 100, 'main_layer643': 1, 'side_layer643': 100, 'main_layer653': 1, 'side_layer653': 100, 'main_layer663': 1, 'side_layer663': 100, 'main_layer673': 1, 'side_layer673': 100, 'main_layer683': 1, 'side_layer683': 100,
-                             'main_layer713': 1, 'side_layer713': 100, 'main_layer723': 1, 'side_layer723': 100, 'main_layer733': 1, 'side_layer733': 100, 'main_layer743': 1, 'side_layer743': 100, 'main_layer753': 1, 'side_layer753': 100, 'main_layer763': 1, 'side_layer763': 100, 'main_layer773': 1, 'side_layer773': 100, 'main_layer783': 1, 'side_layer783': 100,
-                             'main_layer813': 1, 'side_layer813': 100, 'main_layer823': 1, 'side_layer823': 100, 'main_layer833': 1, 'side_layer833': 100, 'main_layer843': 1, 'side_layer843': 100, 'main_layer853': 1, 'side_layer853': 100, 'main_layer863': 1, 'side_layer863': 100, 'main_layer873': 1, 'side_layer873': 100, 'main_layer883': 1, 'side_layer883': 100, 'reshaped1': 0}
+               loss_weights={'main_layer113': alpha, 'side_layer113': beta, 'main_layer123': alpha, 'side_layer123': beta, 'main_layer133': alpha, 'side_layer133': beta, 'main_layer143': alpha, 'side_layer143': beta, 'main_layer153': alpha, 'side_layer153': beta, 'main_layer163': alpha, 'side_layer163': beta, 'main_layer173': alpha, 'side_layer173': beta, 'main_layer183': alpha, 'side_layer183': beta,
+                             'main_layer213': alpha, 'side_layer213': beta, 'main_layer223': alpha, 'side_layer223': beta, 'main_layer233': alpha, 'side_layer233': beta, 'main_layer243': alpha, 'side_layer243': beta, 'main_layer253': alpha, 'side_layer253': beta, 'main_layer263': alpha, 'side_layer263': beta, 'main_layer273': alpha, 'side_layer273': beta, 'main_layer283': alpha, 'side_layer283': beta,
+                             'main_layer313': alpha, 'side_layer313': beta, 'main_layer323': alpha, 'side_layer323': beta, 'main_layer333': alpha, 'side_layer333': beta, 'main_layer343': alpha, 'side_layer343': beta, 'main_layer353': alpha, 'side_layer353': beta, 'main_layer363': alpha, 'side_layer363': beta, 'main_layer373': alpha, 'side_layer373': beta, 'main_layer383': alpha, 'side_layer383': beta,
+                             'main_layer413': alpha, 'side_layer413': beta, 'main_layer423': alpha, 'side_layer423': beta, 'main_layer433': alpha, 'side_layer433': beta, 'main_layer443': alpha, 'side_layer443': beta, 'main_layer453': alpha, 'side_layer453': beta, 'main_layer463': alpha, 'side_layer463': beta, 'main_layer473': alpha, 'side_layer473': beta, 'main_layer483': alpha, 'side_layer483': beta,
+                             'main_layer513': alpha, 'side_layer513': beta, 'main_layer523': alpha, 'side_layer523': beta, 'main_layer533': alpha, 'side_layer533': beta, 'main_layer543': alpha, 'side_layer543': beta, 'main_layer553': alpha, 'side_layer553': beta, 'main_layer563': alpha, 'side_layer563': beta, 'main_layer573': alpha, 'side_layer573': beta, 'main_layer583': alpha, 'side_layer583': beta,
+                             'main_layer613': alpha, 'side_layer613': beta, 'main_layer623': alpha, 'side_layer623': beta, 'main_layer633': alpha, 'side_layer633': beta, 'main_layer643': alpha, 'side_layer643': beta, 'main_layer653': alpha, 'side_layer653': beta, 'main_layer663': alpha, 'side_layer663': beta, 'main_layer673': alpha, 'side_layer673': beta, 'main_layer683': alpha, 'side_layer683': beta,
+                             'main_layer713': alpha, 'side_layer713': beta, 'main_layer723': alpha, 'side_layer723': beta, 'main_layer733': alpha, 'side_layer733': beta, 'main_layer743': alpha, 'side_layer743': beta, 'main_layer753': alpha, 'side_layer753': beta, 'main_layer763': alpha, 'side_layer763': beta, 'main_layer773': alpha, 'side_layer773': beta, 'main_layer783': alpha, 'side_layer783': beta,
+                             'main_layer813': alpha, 'side_layer813': beta, 'main_layer823': alpha, 'side_layer823': beta, 'main_layer833': alpha, 'side_layer833': beta, 'main_layer843': alpha, 'side_layer843': beta, 'main_layer853': alpha, 'side_layer853': beta, 'main_layer863': alpha, 'side_layer863': beta, 'main_layer873': alpha, 'side_layer873': beta, 'main_layer883': alpha, 'side_layer883': beta, 'reshaped1': 0}
                )
 
 model1.fit([input_grey, input_grey, input_grey, input_grey, input_grey, input_grey, input_grey, input_grey,
