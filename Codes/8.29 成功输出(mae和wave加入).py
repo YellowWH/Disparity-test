@@ -18,7 +18,7 @@ iml = array(Image.open("Laundry-7views\\Laundry\\view0.png"))
 imr = array(Image.open("Laundry-7views\\Laundry\\view1.png"))
 alpha = 1
 beta = 25
-gamma = 0
+gamma = 0.00001
 # m = 184
 # n = 319
 m = 184
@@ -268,8 +268,8 @@ for i in range(0, 32):
     shisasum_weights[i] = i * 8
 
 # 最大是46*55
-for j in range(20, 25):
-    for k in range(20, 25):
+for j in range(20, 26):
+    for k in range(20, 26):
         m = j * 8
         n = k * 8
         target_pixel11 = iml[m, n,]
@@ -3668,7 +3668,54 @@ for j in range(20, 25):
         adam = Adam(lr=1, decay=0)
         # entropy权重0
         model1.compile(optimizer=adam,
-                       loss='mse',
+                       loss={'main_layer113': 'mse', 'side_layer113': 'mae', 'main_layer123': 'mse',
+                                     'side_layer123': 'mae', 'main_layer133': 'mse', 'side_layer133': 'mae',
+                                     'main_layer143': 'mse', 'side_layer143': 'mae', 'main_layer153': 'mse',
+                                     'side_layer153': 'mae', 'main_layer163': 'mse', 'side_layer163': 'mae',
+                                     'main_layer173': 'mse', 'side_layer173': 'mae', 'main_layer183': 'mse',
+                                     'side_layer183': 'mae',
+                                     'main_layer213': 'mse', 'side_layer213': 'mae', 'main_layer223': 'mse',
+                                     'side_layer223': 'mae', 'main_layer233': 'mse', 'side_layer233': 'mae',
+                                     'main_layer243': 'mse', 'side_layer243': 'mae', 'main_layer253': 'mse',
+                                     'side_layer253': 'mae', 'main_layer263': 'mse', 'side_layer263': 'mae',
+                                     'main_layer273': 'mse', 'side_layer273': 'mae', 'main_layer283': 'mse',
+                                     'side_layer283': 'mae',
+                                     'main_layer313': 'mse', 'side_layer313': 'mae', 'main_layer323': 'mse',
+                                     'side_layer323': 'mae', 'main_layer333': 'mse', 'side_layer333': 'mae',
+                                     'main_layer343': 'mse', 'side_layer343': 'mae', 'main_layer353': 'mse',
+                                     'side_layer353': 'mae', 'main_layer363': 'mse', 'side_layer363': 'mae',
+                                     'main_layer373': 'mse', 'side_layer373': 'mae', 'main_layer383': 'mse',
+                                     'side_layer383': 'mae',
+                                     'main_layer413': 'mse', 'side_layer413': 'mae', 'main_layer423': 'mse',
+                                     'side_layer423': 'mae', 'main_layer433': 'mse', 'side_layer433': 'mae',
+                                     'main_layer443': 'mse', 'side_layer443': 'mae', 'main_layer453': 'mse',
+                                     'side_layer453': 'mae', 'main_layer463': 'mse', 'side_layer463': 'mae',
+                                     'main_layer473': 'mse', 'side_layer473': 'mae', 'main_layer483': 'mse',
+                                     'side_layer483': 'mae',
+                                     'main_layer513': 'mse', 'side_layer513': 'mae', 'main_layer523': 'mse',
+                                     'side_layer523': 'mae', 'main_layer533': 'mse', 'side_layer533': 'mae',
+                                     'main_layer543': 'mse', 'side_layer543': 'mae', 'main_layer553': 'mse',
+                                     'side_layer553': 'mae', 'main_layer563': 'mse', 'side_layer563': 'mae',
+                                     'main_layer573': 'mse', 'side_layer573': 'mae', 'main_layer583': 'mse',
+                                     'side_layer583': 'mae',
+                                     'main_layer613': 'mse', 'side_layer613': 'mae', 'main_layer623': 'mse',
+                                     'side_layer623': 'mae', 'main_layer633': 'mse', 'side_layer633': 'mae',
+                                     'main_layer643': 'mse', 'side_layer643': 'mae', 'main_layer653': 'mse',
+                                     'side_layer653': 'mae', 'main_layer663': 'mse', 'side_layer663': 'mae',
+                                     'main_layer673': 'mse', 'side_layer673': 'mae', 'main_layer683': 'mse',
+                                     'side_layer683': 'mae',
+                                     'main_layer713': 'mse', 'side_layer713': 'mae', 'main_layer723': 'mse',
+                                     'side_layer723': 'mae', 'main_layer733': 'mse', 'side_layer733': 'mae',
+                                     'main_layer743': 'mse', 'side_layer743': 'mae', 'main_layer753': 'mse',
+                                     'side_layer753': 'mae', 'main_layer763': 'mse', 'side_layer763': 'mae',
+                                     'main_layer773': 'mse', 'side_layer773': 'mae', 'main_layer783': 'mse',
+                                     'side_layer783': 'mae',
+                                     'main_layer813': 'mse', 'side_layer813': 'mae', 'main_layer823': 'mse',
+                                     'side_layer823': 'mae', 'main_layer833': 'mse', 'side_layer833': 'mae',
+                                     'main_layer843': 'mse', 'side_layer843': 'mae', 'main_layer853': 'mse',
+                                     'side_layer853': 'mae', 'main_layer863': 'mse', 'side_layer863': 'mae',
+                                     'main_layer873': 'mse', 'side_layer873': 'mae', 'main_layer883': 'mse',
+                                     'side_layer883': 'mae', 'wavedense': 'mae'},
                        metrics=['accuracy'],
                        loss_weights={'main_layer113': alpha, 'side_layer113': beta, 'main_layer123': alpha,
                                      'side_layer123': beta, 'main_layer133': alpha, 'side_layer133': beta,
